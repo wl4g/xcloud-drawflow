@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>xcloud-drawflow-core</artifactId>
+	<packaging>jar</packaging>
+	<name>XCloud Drawflow Core</name>
+	<url>http://xcloud.wl4g.com</url>
+	<parent>
+		<groupId>com.wl4g</groupId>
+		<artifactId>xcloud-drawflow</artifactId>
+		<version>master</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<properties>
+		<java.version>1.8</java.version>
+		<maven-source-plugin.version>2.4</maven-source-plugin.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.wl4g</groupId>
+			<artifactId>xcloud-component-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>com.google.appengine</groupId> -->
+		<!-- <artifactId>appengine-api-1.0-sdk</artifactId> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>javax.cache</groupId> -->
+		<!-- <artifactId>cache-api</artifactId> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.ehcache</groupId> -->
+		<!-- <artifactId>ehcache</artifactId> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>javax.servlet.jsp.jstl</groupId> -->
+		<!-- <artifactId>jstl</artifactId> -->
+		<!-- <version>1.2</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.mxgraph</groupId> -->
+		<!-- <artifactId>gae-stub</artifactId> -->
+		<!-- <version>1.0.8</version> -->
+		<!-- <scope>system</scope> -->
+		<!-- <systemPath>${project.basedir}/lib/gae-stub-1.0.8.jar</systemPath> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>com.pusher</groupId>
+			<artifactId>pusher-java-client</artifactId>
+			<version>1.0.0</version>
+			<!-- <version>2.2.6</version> -->
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.java-websocket</groupId>
+			<artifactId>java-websocket</artifactId>
+			<version>1.3.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/java-websocket-1.3.1.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
